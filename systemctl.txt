@@ -1,0 +1,46 @@
+# Kernels and logging for system administration
+
+## systemctl
+systemctl list-unit-files -at service 
+systemctl list-units -at service 
+systemctl list-units -t service --state running 
+systemctl cat rsyslog  # shows unit file dependencis 
+systemctl status rsyslog
+systemctl is-active rsyslog 
+systemctl mask rsyslog
+systemctl unmask rsyslog
+systemctl disable rsyslog
+systemctl enable   rsyslog
+
+## kernal
+sudo ls -l /boot
+sudo ls -l /boot/grub2 # do not edit this fiel, it creates automatically
+cat /etc/default/grub  # see the current grub options
+ls /proc
+ls /proc/cpuinfo
+ls -l /lib/modules/$(uname -r)/kernel
+sudo apt list installed kernel-* 
+sudo yum list installed kernel-* 
+
+
+## manage kernel modules
+ls -l /lib/modules/$(uname -r)/kernel
+ls /lib/modules # for 32bit kernel
+ls /lib64/modules # for 64bit kernel 
+lsmod
+modinfo <name of the module>
+sudo modprobe -v <name of the module> # load new module
+sudo modprobe -vr <name of the module> # remove the  module
+sudo depmod -v  # show which module needed by hardware
+
+## load the module automatically at boot # check notes and study again
+# create a file and add to /etc/module-load.d
+
+## makesure module not loaded at boot # check notes and study again
+
+
+
+
+
+
+

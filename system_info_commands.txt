@@ -1,0 +1,430 @@
+Building an Ubuntu Server
+#####################################################
+
+hostnamectl
+timedatectl
+timedatectl list-timezones
+timedatectl set-timezone  <Entere Time zone>
+timedatectl
+
+#####################################################
+
+# Hardwars info
+lshw
+sudo lshw -html > hw.html
+lsblk
+blkid
+lsmem
+lsmem -a
+lscpu
+cat /proc/cpuinfo
+lspci -tnv
+lsusb -tv
+lspci -v
+
+# operating system
+lsb_release -a
+cat /etc/os-release /etc /lsb-release
+hostnamectl
+######################################################
+
+# package manager
+apt list
+apt search
+apt update
+apt search nmap 
+apt show nmap
+apt install nmap
+nmap localhost
+apt remove nmap
+
+apt update
+apt upgrade
+sudo reboot
+
+apt autoremove
+dpkg-reconfigure unattended-upgrades
+
+
+# snaps to learn snapcraft.io
+snap find hello
+snap install hello
+ls /snap/
+hello
+snap refresh
+snap remove hello
+man snap
+
+###########################################################
+
+# User
+adduser <name>
+cat /etc/skel
+usermod -aG sudo <name>
+deluser <name>
+
+########################################################
+
+# Logs
+ls /var/log/
+less /var/log/syslog
+tail /var/log/dpkg.log
+
+jounalctl
+f  # forward
+b  # backword
+/  # search
+q  # quit
+
+journalctl -u ssh
+journalctl --since "10 minutes ago"
+journalctl --since "2023-06-06"
+journalctl -b  # last boot
+man journalctl
+
+###############################################################
+
+# Managing Process
+ps # Process status
+ps aux
+ps -e # whole system
+ps -ef 
+ps -ejHF
+man ps
+kill -l
+ps -e | grep bash
+kill -9 <Process ID>
+top
+htop
+
+#########################################################
+
+# Monitor process
+htop
+?  # help
+,
+q # quit
+
+# storage info
+free -h
+df -h
+df -h /
+find / -size +500M
+man nice
+apt show quota
+swapon
+
+########################################################
+
+# managing services
+systemctl
+systemctl status <name of services>
+journalctl -u <> <name of services>
+systemctl start <name of services>
+systemctl stop <name of services>
+systemctl restart <name of services>
+systemctl enable <name of services>
+systemctl disable <name of services>
+
+# power intruption
+
+#########################################################
+# desktop
+sudo apt install ubuntu-desktop
+sudo shutdowm -r now
+ctrl alt f2
+ctrl alt f1
+
+# VNC RDP protocal
+sudo apt install xrdp
+sudo usermod -aG ssl-cert xrdp
+sudo ufw allow 3389
+sudo vi /etc/xrdp/startwn.sh
+
+#########################################################
+# Storage
+lsblk
+sudo lshw -businfo -c disk
+fdisk /dev/sda # double check
+p # print the partitiion
+d # delete
+g # GPT guid partition table
+n # new
+p # print the partition
+w # write
+lsblk
+# add file system
+mkfs.ext4 /dev/sda1
+# mount to the disk
+sudo mkdir /mnt/storage
+sudo mount /dev/sda1 /mnt/storage
+sudo chmod 777 /mnt/storage 
+
+
+
+# redundant storage
+# RAID
+# LVM
+# ZFS
+# study learning FreeNAS
+# BTRFS B-tree file system
+# system management,storage management courses
+
+########################################################
+
+# Encrypting a disk
+LUKS  # Linux Unified Key Setup
+lsblk
+sudo fdisk /dev/sdc  # external disk
+sudo luksformat -t etx4 /dev/sdc1
+YES
+sudo crypetsetup open /dev/sdc1 securefiles
+# Entre password
+ls /dev/mapper
+# mount the encrypt volume
+sudo mkdir /mnt/securestorage
+sudo mount /dev/mapper/securefiles /mnt/securestorage
+sudo chmod 777 /mnt/securestorage
+# store files on encrypted volume
+touch /mnt/securestorage/secreatefiles
+sudo unmount /mnt/securestorage
+sudo cryptsetup close securefiles
+# study security tips: Protecting sensitive information
+
+# Automatically Mount system
+cat /etc/fstab
+sudo blkid # find the UUID information
+
+########################################################
+
+# Monitor Storage
+iotop # input output top
+apt install iotop
+apt install sysstat
+sudo iostat
+sudo iostat -h
+df -h 
+sudo hdparm -tTv /dev/sdb2  # hard-drive parameter
+
+#########################################################
+
+# Network
+networkctl
+networkctl status <enp0s25>
+networkctl status <name of the adapter>
+less
+# study again
+
+#######################################################
+# Firewall UFW
+# add rule
+sudo ufw allow 22
+suod ufw enable
+sudo ufw status
+sudo ss -anpst
+ 
+
+# delete the rule
+sudo ufw delete allow <port number>
+sudo ufw status numbered
+sudo ufw delete allow <number>
+
+#######################################################
+Monitor network activity
+which iftop
+apt install iftop
+sudo iftop
+q # quit
+sudo apt install jnettop
+sudo jnettop -i <enp0s25>
+q # quit
+
+nmap
+
+#######################################################
+# Common Services
+# systemctl status sshd
+# copy files
+scp
+sftp
+
+# File sharing
+sudo apt install samba
+sudo  cat /etc/samba/smb.conf 
+
+# Web Server
+apt install apache2
+sudo ufw allow 80/tcp
+# copy the website to the server
+sudo cp -R website/* /var/www/html
+# change ownership
+# sudo chown -R www-data:www-data /var/www/html
+ls /var/www/html
+sudo vi /etc/apachi2/apachi2.conf
+sudo vi /etc/apachi2/sites-available/000-default.conf
+man a2ensite
+apt show libapche2-mod-php
+systemctl status apache2
+sudo systemctl stop apache2
+sudo systemctl disable apache2
+
+# web server nginx
+sudo apt install nginx
+sudo ufw allow 80/tcp
+ls /var/www/html
+vi /etc/nginx/nginx.conf
+vi /etc/nginx/sites-available/default
+sudo ls -l /etc/nginx/sites-enabeled
+sudo systemctl nginx
+
+# database
+sudo apt install mariadb-server
+sudo mysql_secure_installation
+
+# monitoring server with Cockpit
+
+# Virtualization with KVM/QEMU
+
+########################################################
+# Container with LXC
+# setup the enviorment
+sudo lxd init
+id
+# add user to the container
+sudo usermod -aG lxd <Name of tthe user>
+# create a container
+lxc remote list
+# LXC download the image and prepare the container
+
+# lxc list
+
+study again
+
+########################################################
+# container docker for distributing software
+sudo apt install docker.iso
+docker search database
+docker search 
+docker search alpine
+sudo docker pull alpine
+sudo docker run alpine
+
+#####################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Container with Docket
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 

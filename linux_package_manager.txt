@@ -1,0 +1,202 @@
+# dpkg and apt package manager
+dpkg
+apt
+aptitude
+man dpkg
+man apt-get
+man apt-cash
+man apt
+man aptitude
+
+apt search <package name>
+apt serach nano
+apt-cache search nano
+
+# package from website
+packages.ubuntu.com  # website
+uuid # seach for uuid
+wget <link>
+
+# off line copy of software
+apt-get download <name of the package>
+apt-get download nmap
+ls -lh
+apt show nano
+apt show nmap
+dpkg --info <package.deb>
+dpkg -c <package.deb>
+dpkg -S /usr/bin/nmcli
+
+# Install package
+apt install <name of package>
+apt-get <name of package>
+dpkg -i <name of package>
+
+sudo apt update
+sudo apt -y install nmap
+
+# find the dependency of the packages
+dpkg --info <package.deb>
+
+# check Installed packages
+apt list --installed
+dpkg -L nano
+apt list <package name>
+dpkg -s <package name>
+dpkg -s nano
+
+# remove the package
+apt remove <name of the package>
+sudo apt autoremove
+sudo dpkg -r <name of the package>
+
+# Upgrading package (study again)
+sudo apt update
+sudo apt upgrade
+sudo apt remove nano
+sudo apt show -a <name of the package>
+sudo apt install nano # it will upgrade latest version
+apt show nano
+
+# keep the old version of the package
+sudo apt-mark hold nano
+sudo apt upgrade #  note nano will not upgrade
+sudo apt-mark unhold nano
+
+# installing from source
+step 1:  tar -xf somepackage.tar.bz2
+step 2: cd  somepackage
+step 3:  ./configure
+step 4: make
+step 5: sudo make -n install
+step 6: make install
+
+sudo apt install build-essential
+apt show build-essential
+
+# managing apt reposotories
+cd /etc/apt
+ls -l
+ls sourses.list.d
+cat sources.list # edit list of reposoriteries
+sudo apt update
+
+# cryptographi key to verify authenticatin of package
+apt-key list
+
+
+## learning Debian Linus # title
+# managing software with apt
+ls /etc/apt
+sudo apt update
+apt search tree
+apt list tree
+apt list t*e # regular expression search
+apt show tree
+apt info tree
+sudo apt install tree
+sudo updgrade tree
+apt remove tree
+apt list --installed 
+
+sudo apt install unattended-upgrade
+sudo dpkg-reconfigure unattended-upgrade
+
+## Cert Prep: CompTIA Linux+ (XK0-005)
+# Get package information with dpkg and APT
+sudo apt search whois
+sudo apt info whois
+sudo apt list --installed whois
+sudo apt list whois
+sudo apt install whois
+sudo apt list whois
+
+sudp apt info apache
+cd ~/Downloads
+apt-get download whois
+sudo dpkg --info <pakage.deb>
+sudo dpkg -c <pakage.deb>
+sudo dpkg -i <pakage.deb> # install package
+sudo dpkg -L whois
+sudo dpkg -S /usr/bin/whois
+
+
+sudo apt install apache2
+sudo apt info apache2
+sudo apt list --upgradable
+sudo apt update
+sudo apt install --only-upgrade snapd
+
+sudo apt remove apache2
+sudo apt autoremove
+sudo sudo dpkg -r rsync
+sudo apt purge apache2 # it removes configuration file 
+
+sudo apt full-upgrade # update the distribution to next version
+
+# Work with APT repositories (study again)
+grep '^deb' /etc/apt/source/.list /etc/apt/source/.list.d/*
+
+# add repositories
+sudo apt install curl
+
+sudo add-apt-repository ppa:libreoffice/ppa
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,45 @@
+# kernels and logging for system administration
+
+## search files
+find / -name *.txt | grep apache ### find a text file called apache in entire operating system.
+
+# search words in file
+grep -i 'root' /etc/passwd
+grep  '^http.*tcp.*services$' /etc/services
+egrep '^http.*(tcp|udp).*services$' /etc/services
+
+# all system log messages in one place
+sudo cat /var/log/messages 
+sudo grep -v 'systemd:' /var/log/messages   ### search everything but not systemd
+sudo tail -f /var/log/messages              ### follow the end of the file
+less -N  /etc/rsyslog.config                ### check notes and study again
+sudo cat /var/log/boot.log 
+sudo cat /var/log/secure                    ### for authentication
+sudo cat /var/log/cron
+sudo cat /var/log/maillog
+
+# logger command to write log message to the system log file
+logger "message to the log file"
+sudo tail -f /var/log/messages
+
+# journald on ram               ### check notes and study again    
+sudo journalctl                 ### type q to quit
+sudo journalctl -k              ### log related to kernel 
+sudo journalctl    /sbin/crond  ### log related to specific command
+sudo journalctl -u /sbin/crond  ### log related to specific unit example crond
+sudo journalctl -t
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
