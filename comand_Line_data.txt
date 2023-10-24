@@ -1,0 +1,169 @@
+# commands
+date
+date --help
+history
+
+# running programs
+ls
+which ls
+echo $PATH
+$?
+sleep 5
+
+# run the command on the background
+sleep 5&
+
+# process
+ps
+kill &1
+
+# shell expansion
+ls data
+ls data
+ls data/*.txt
+
+# glob pattern and shell expansion
+mkdir -p /tmp/reports/{01,02,03}
+
+# pipes and redirection
+wc 
+how many # input from command line 
+word count
+ctrl + d # end of the input
+wc < file.txt
+wc -l <  file.txt # shows number of lines
+
+# file and directories
+pwd
+ls
+ls -l # long
+ls -lh # human
+ls -lSh # order of size from highest to lowest
+du -sh <name of the folder>
+cp <from> <to>
+mv <from> <to>
+mkdir
+mkdir -p
+find . -name '*.txt'
+
+# data ingestion
+cat <file.txt>
+cat -n <file.txt> # line number
+zcat
+bzcat
+less # arrow up and down and q to quit
+
+## data web API
+curl # command line http client
+curl 'paste the link' > file.csv # date link is csv API file
+
+## command line users guide
+# https://lynx.invisible-island.net/lynx_help/Lynx_users_guide.html
+lynx -dump 'paste the link'
+
+## get file from other sustem
+scp
+ssh
+
+## to get data from other cloud storage
+gsutil # from google cloud storage
+gsutil ls gs://gcp-public-data-landsat
+gsutil cp <from > <to>
+gcloud auth login # command click the link and follow instruction
+                  # paste the code
+
+## data from other cloude providers
+# every cloude providers has its own commands, find them and use them
+
+## data from database 
+## database has command line utilities or clients
+
+# selecting data
+head
+tail
+shuf
+grep
+cut
+jq # JSON File # Note: Do not use regular expression to pass JSON files
+jq # JSON query
+## https://jqlang.github.io/jq/
+cat <file.json> | jq
+
+
+# regular expression
+g/re/p 
+## https://regex101.com
+grep <file.txt> | wc -l
+grep -- help # options are printing file names, walking directory 
+
+# data transformation
+tr
+sed
+awk
+
+# calculation
+sort
+uniq
+bc
+awk
+
+# visualization # create the plot on terminal in addition make png file
+printf # https://www.gnu.org/software/coreutils/manual/html_node/printf-invocation.html#printf-invocation
+gnuplot # http://gnuplot.info/
+gnuplot # https://gnuplot.sourceforge.net/demo/
+gnuplot # http://gnuplot.info/screenshots/index.html#demos
+gnuplot # https://gnuplot.sourceforge.net/demo/boxclusters.html
+
+cat <file.csv> | sed 's/,/ /' | gnuplot -e 'set term png; plot "-" using 0:2 with boxplot' title " Chart1">  chart.png
+cat <file.csv> | sed 's/,/ /' | gnuplot -e '
+set terminal dumb;
+plot "-" using 0:2 with boxplot' title " Chart1"
+'
+
+## plot on terminal on single line 
+export GNUTERM=dumb
+cat <file.csv> | sed 's/,/ /' | gnuplot -e 'plot "-" using 0:2 with boxplot' title " Chart1";'
+
+
+
+
+
+
+# data transformation
+tr
+sed # https://www.gnu.org/software/sed/manual/sed.html
+## delete empty lines using sed
+cat <File.txt> | sed '/$^'/d'
+awk # https://www.gnu.org/software/gawk/manual/gawk.html
+awk # data processing full programing language
+awk # split the fields by space
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

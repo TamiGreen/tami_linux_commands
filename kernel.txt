@@ -1,0 +1,24 @@
+# advanced linux the linux kernel
+
+## kernal command line parameters ### study again
+dmesg | head -200 > dmesg.save
+cat /proc/cmdline
+cat usr/src/linux-5.3.0/Documentation/admin-guide/kernel-parameter.txt
+view usr/src/linux-5.3.0/Documentation/admin-guide/kernel-parameter.txt
+
+## system services
+which init
+ls   -l   $(which init)
+file      /lib/systemd/systemd
+ps   -ef  | grep init
+ls        /etc/systemd/system
+ls   -l   /sbin/init
+sudo ls -l /proc/1/exe  ### process id one and exe means execuitable
+ls   -ld /lib
+
+
+
+
+
+
+

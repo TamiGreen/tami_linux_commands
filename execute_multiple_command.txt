@@ -1,0 +1,15 @@
+
+
+# execute comppund commands
+echo "A" ; echo "B" # ; # execute both the commands
+mkdir newfolder && cd newfolder # first command success then second command runs
+mkdir newfolder || cd newfolder first command fails then second command runs
+
+
+# execute comppund commands and redirection to file
+{} # process all command inside as one command on same shell
+{echo "A" ; echo "B";} > file.txt  # ok 
+ echo "A" ; echo "B";  > file,txt  # not ok 
+
+() # process all command inside as one command on sub shell
+(echo "A" ; echo "B";) > file.txt  # ok 

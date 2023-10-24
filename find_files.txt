@@ -1,0 +1,118 @@
+locate bzip2
+locate -c bizip2
+locate bzip2 man
+locate -c bizip2 and man
+locate -A bzip2 man
+locate -i high ### case insensitive
+ls /etc/*.conf ### wild card
+locate --regexp '^/usr.*pixmaps.*jpg'
+locate --regexp '^/usr.*(pixmaps|backgrounds).*jpg' 
+locate -S
+sudo updatedb
+
+find / -name *.txt | grep apache ### find a text file called apache in entire operating system.
+find / -name bash
+find / -name *bash*
+find / -not -iname *bash*
+find -regextype help
+f # file
+d # directory
+l # symbolic link
+c # Character divice
+b # block device
+
+sudo find / -type f -name *bash*  ### files
+sudo find / -type f,d -name *bash*  ### files and directories
+
+find /usr -size +10M
+find /usr -size +empty 
+c # bytes
+k # Kilobytes
+M # Megabytes
+G # Gigabytes
+b # 512-byte blocks
+
+# last acces time
+-amin  # minites
+-atime # days
+
+# last changed time
+-cmin 
+-ctime
+
+# last modified time
+-mmin
+-mtime  # metadata
+
+# Find files by time
+find / -atime 1
+find / -atime -1
+find / -atime +1
+
+sudo find / - .mtime -1
+sudo find / -user user1 # find files specific to the user
+
+# find files with insecure permissions
+-readable
+-writable
+-executable
+
+# Find files by Numeric permission
+-perm 644
+-perm -644
+-perm /644
+
+# find by symbolic permission
+# https://www.linkedin.com/learning/cert-prep-comptia-linux-plus-xk0-005/find-files-with-find?autoSkip=true&resume=false
+-perm u=rw, g=r, o=r
+-perm -u=rw, g=r, o=r
+-perm /u=rw, g=r, o=r
+-perm -664
+-perm /664
+
+
+# Action taken on the find files
+-print/  -printf  #Display output
+-delete #Delete maching files
+-ls #List the metadata of files
+-prune # Omit matching files
+-exec # Execute command for each
+
+
+find / -size +1M -exec stat -c "%s %n" {}\;
+
+# -exec stat -c "%s %n" Means stat command on each file out put size and name
+# {} # place holder each search items name
+# \; means there are no more commands to run 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
