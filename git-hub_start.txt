@@ -1,0 +1,16 @@
+# Setp1: Create Rpository in github website
+
+# or create a new repository on the command line
+echo "# tami_jupyter" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/TamiGreen/tami_jupyter.git
+git push -u origin main
+
+
+# or push an existing repository from the command line
+git remote add origin https://github.com/TamiGreen/tami_jupyter.git
+git branch -M main
+git push -u origin main
