@@ -310,6 +310,14 @@ sudo docker pull alpine
 sudo docker run alpine
 
 #####################################################
+# Network IP Domine server
+ping website.com
+cat /etc/resolv.conf # find name server
+dig website.com  # find the ip address for and name servder
+dig @8.8.8.8 google.com   # google DNS server
+# There is no need to use DNS server if we use ip address for connecting.
+
+# 
 
 
 
